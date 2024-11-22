@@ -1,7 +1,5 @@
 import {create} from 'zustand'
 
-// Does this repeat with noteStore? Absolutely. Is there a way to simplify it? Probably. Does it really matter on a project of this scale? Not really.
-
 const courseStore = create((set) => ({
     courses: [],
     initialized: false,

@@ -1,18 +1,18 @@
-import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import NoteCard from './components/NoteCard'
+import Layout from './views/Layout'
+import HomePage from './views/HomePage'
 import NoteList from './views/NoteList'
-import courseStore from './stores/courseStore'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  const initializeCourses = courseStore((state) => state.initializeCourses);
-
   return (
     <>
-      <NoteCard timestamp="123" course="testi" text="aaaaaa" />
-      <NoteList />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="list-notes" element={<NoteList />} />
+        </Route>
+      </Routes>
     </>
   )
 }
