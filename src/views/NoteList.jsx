@@ -16,7 +16,7 @@ function NoteList() {
             <div>
                 {
                     notes.map((note) => {
-                        return <NoteCard timestamp={note.timestamp} course={note.course.name} text={note.text} />
+                        return <NoteCard key={note.id} timestamp={note.timestamp} course={note.course.name} text={note.text} />
                     })
                 }
             </div>
