@@ -3,14 +3,12 @@ import NoteCardText from "./NoteCardText"
 function NoteCard(props)
 {
     return (
-        <>
 
         <div>
             <p>{props.timestamp}</p>
             <p>{props.course}</p>
-            <NoteCardText text={props.note} />
+            <NoteCardText text={props.text} />
         </div>
-        </>
     )
 }
 
