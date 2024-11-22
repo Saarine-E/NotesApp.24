@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import './App.css'
 import Layout from './views/Layout'
 import HomePage from './views/HomePage'
 import NoteList from './views/NoteList'
