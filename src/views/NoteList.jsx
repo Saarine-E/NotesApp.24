@@ -12,7 +12,6 @@ function NoteList() {
     }, []);
     
     return (
-        // <>
             <div>
                 {
                     notes.map((note) => {
@@ -20,7 +19,6 @@ function NoteList() {
                     })
                 }
             </div>
-        // </>
     )
 }
 
