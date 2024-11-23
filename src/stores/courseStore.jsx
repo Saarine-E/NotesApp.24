@@ -12,7 +12,6 @@ const courseStore = create((set) => ({
     initializeCourses: async () => {
         if(!courseStore.getState().initialized){
             try {
-
                 const url = "https://luentomuistiinpano-api.netlify.app/.netlify/functions/courses";
                 let response = await fetch(url);
                 let json = await response.json();

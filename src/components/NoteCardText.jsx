@@ -1,8 +1,6 @@
 function NoteCardText(props) {
     return (
-        <div>
-            <p>{props.text}</p>
-        </div>
+        <p className="p-2 bg-slate-300 col-span-3">{props.text}</p>
     )
 }
 
