@@ -16,7 +16,6 @@ const courseStore = create((set) => ({
                 let response = await fetch(url);
                 let json = await response.json();
                 set({courses: json, initialized: true});
-                console.log(json);
             } catch (error) {
                 console.error("Failed to fetch course data: " + {error});
             }

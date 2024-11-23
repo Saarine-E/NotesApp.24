@@ -4,10 +4,10 @@ const noteStore = create((set) => ({
     notes: [],
     initialized: false,
 
-    addNote: (newNote) =>
-        set((state) => ({
-            notes: [...state.notes, newNote]
-        })),
+    addNote: (props) => {
+        let newNote = {id: props.id, text: props.text, course: props.course, timestamp: props.timestamp};
+        set({notes: [...state.notes, newNote]});
+    },
 
     initializeNotes: async () => {
         if(!noteStore.getState().initialized){
