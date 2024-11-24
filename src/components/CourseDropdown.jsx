@@ -14,9 +14,9 @@ function CourseDropdown({ OnCourseChange }){
     }
 
     return (
-        <div className="grid grid-cols-2">
-            <label htmlFor="course-select">Course:</label>
-            <select name="course" id="course-select" onChange={(e) => ChangeValue(e)} className="p-1">
+        <div className="mt-4 grid grid-cols-4 auto-cols-min">
+            <label htmlFor="course-select" className="p-2">Course:</label>
+            <select name="course" id="course-select" onChange={(e) => ChangeValue(e)} className="p-2 col-span-2">
                 <option key="-1" value="all">all</option>
                 {courses.map((course) => {
                         return <option key={course.id} value={course.name}>{course.name}</option>

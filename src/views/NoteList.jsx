@@ -29,32 +29,28 @@ function NoteList() {
         setSelectedFilter(courseName);
     }
     
-    return filteredList.length > 0 ? (
-        <>
+    return (
+        <div className="sm:w-full md:w-11/12 lg:w-2/4">
             <Link 
                 to="/" 
                 className=" w-20 px-4 py-2 text-center text-white bg-blue-500 rounded-md shadow-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-600 transition-all">
                 Back
             </Link>
+            
             <CourseDropdown OnCourseChange={HandleListFiltering} />
+
             <div>
-                {
-                    filteredList.map((note) => {
-                        return <NoteCard key={note.id} timestamp={note.timestamp} course={note.course.name} courseid={note.course.id} text={note.text} />
-                    })
+                { 
+                    filteredList.length > 0 ? (
+                        filteredList.map((note) => {
+                            return <NoteCard key={note.id} timestamp={note.timestamp} course={note.course.name} courseid={note.course.id} text={note.text} />
+                        })
+                    ) : (
+                        <NoteCard timestamp="" course="" courseid="" text="Ei muistiinpanoja!" />
+                    )
                 }
             </div>
-        </>
-    ) : (
-        <>
-            <Link 
-                to="/" 
-                className=" w-20 px-4 py-2 text-center text-white bg-blue-500 rounded-md shadow-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-600 transition-all">
-                Back
-            </Link>
-            <CourseDropdown OnCourseChange={HandleListFiltering} />
-            <p>Ei muistiinpanoja!</p>
-        </>
+        </div>
     )
 }
 

@@ -3,9 +3,11 @@ import {create} from 'zustand'
 const noteStore = create((set) => ({
     notes: [],
     initialized: false,
+    dateFormat: new Intl.DateTimeFormat("fi-FI"),
 
     addNote: (props) => {
-        let newNote = {id: props.id, text: props.text, course: props.course, timestamp: props.timestamp};
+        let currentTime = new Date().toISOString();
+        let newNote = {id: props.id, text: props.text, course: props.course, timestamp: currentTime};
         set({notes: [...state.notes, newNote]});
     },
 
