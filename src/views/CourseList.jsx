@@ -31,9 +31,9 @@ function CourseList(){
             <AddCourseInput OnClickFnc={HandleNewCourse} />
            
             <div className="w-full grid mt-4 border rounded-md bg-slate-200 border-slate-700 divide-y divide-slate-700 col-span-5">
-                <div className="grid grid-cols-3 self-center text-white border-slate-700 bg-blue-500">
+                <div className="grid grid-cols-6 self-center text-white border-slate-700 bg-blue-500">
                     <p className="p-2">ID</p>
-                    <p className="p-2 col-span-2">Name</p>
+                    <p className="p-2 col-span-5">Name</p>
                 </div>
                 { courses.length > 0 ? (
 

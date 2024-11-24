@@ -9,15 +9,9 @@ function CourseGridLine(props){
     }
 
     return (
-        <div className="grid grid-cols-3 gap-2">
-            <p className="p-2 w-8">{props.id}</p>
-            <p className="p-2 w-auto">{props.name}</p>
-            <button 
-                className="justify-self-end"
-                title="Delete" 
-                onClick={HandleClick}>
-                <AiOutlineClose size={32} className="fill-slate-700 hover:fill-red-700" />
-            </button>
+        <div className="grid grid-cols-6">
+            <p className="p-2">{props.id}</p>
+            <p className="p-2 col-span-5">{props.name}</p>
         </div>
     )
 }

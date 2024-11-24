@@ -5,9 +5,13 @@ const courseStore = create((set) => ({
     initialized: false,
 
     addCourse: (courseName) => set ((state) => {
-        let idList = new Set(state.courses.map((course) => course.id)); // Create new set with all course ID's
         let newId = 0;
-        while (idList.has(newId)) { newId++ } // Start from 0 and go one by one until an ID number is found that's not included, to account for deleted ID's
+        for(let i = 0; i < state.courses.length; i++) {
+            if (state.courses[i].id > newId) {
+                newId = state.courses[i].id;
+            }
+        }
+        newId++;
         let newCourse = { "id": newId, "name": courseName };
         return {courses: [...state.courses, newCourse]};
     }),
