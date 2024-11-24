@@ -23,7 +23,7 @@ function HomePage(){
                 <Link 
                     to="/add-courses" 
                     className={linkStyle}>
-                    Add/remove courses
+                    Add courses
                 </Link>
             </nav>
         </div>
