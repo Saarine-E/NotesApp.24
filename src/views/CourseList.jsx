@@ -29,7 +29,7 @@ function CourseList(){
             </Link>
 
             <AddCourseInput OnClickFnc={HandleNewCourse} />
-           
+            
             <div className="w-full grid mt-4 border rounded-md bg-slate-200 border-slate-700 divide-y divide-slate-700 col-span-5">
                 <div className="grid grid-cols-6 self-center text-white border-slate-700 bg-blue-500">
                     <p className="p-2">ID</p>

@@ -1,22 +1,24 @@
 import {create} from 'zustand'
 
-const courseStore = create((set) => ({
+export const courseStore = create((set) => ({
     courses: [],
     initialized: false,
 
+    // Add course to array
     addCourse: (courseName) => set ((state) => {
         let newId = 0;
-        for(let i = 0; i < state.courses.length; i++) {
+        for(let i = 0; i < state.courses.length; i++) { // Loop through courses to find the first unused ID number (left over from before I realised courses cant be deleted)
             if (state.courses[i].id > newId) {
                 newId = state.courses[i].id;
             }
         }
         newId++;
-        let newCourse = { "id": newId, "name": courseName };
-        return {courses: [...state.courses, newCourse]};
+        let newCourse = { "id": newId, "name": courseName }; // Create course object
+        return {courses: [...state.courses, newCourse]}; // Add object to course array
     }),
-    
-    initializeCourses: async () => {
+
+    // Initialize courses array from API
+    initializeCourses: async () => { 
         if(!courseStore.getState().initialized){
             try {
                 const url = "https://luentomuistiinpano-api.netlify.app/.netlify/functions/courses";
@@ -29,9 +31,10 @@ const courseStore = create((set) => ({
         }
     },
 
-    removeCourse: (id) =>
+    // Left over from before I realised that courses shouldn't be deleted to avoid orphan notes
+    removeCourse: (id) => 
         set((state) => ({
-            courses: state.courses.filter((course) => course.id !== id)
+            courses: state.courses.filter((course) => course.id !== id) // Filter out the given course from the array by ID
         })),
 }))
 
