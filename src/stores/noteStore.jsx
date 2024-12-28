@@ -10,19 +10,16 @@ const noteStore = create((set) => ({
     // Add note to array
     addNote: (text, courseName) => set ((state) => {
         let newId = 0;
-        for(let i = 0; i < state.notes.length; i++) { // Loop through courses to find the first unused ID number
+        for(let i = 0; i < state.notes.length; i++) { // Loop through notes to find the highest used id number
             if (state.notes[i].id > newId) {
                 newId = state.notes[i].id;
             }
         }
-        newId++;
+        newId++; // Increase id number by 1 to get the lowest available id number
 
-        let currentTime = format(new Date(), "yyyy-MM-dd HH:mm:ss"); // Get current time in ISO standard
-        let selectedCourse = courseStore.getState().courses.find((course) => course.name == courseName); // Find course object matching the given course ID
-        console.debug(courseName);
-        console.debug(courseStore.getState().courses);
+        let currentTime = format(new Date(), "yyyy-MM-dd HH:mm:ss"); // Get the current datetime and change it to the correct format
+        let selectedCourse = courseStore.getState().courses.find((course) => course.name == courseName); // Find course object matching the given course name
         let newNote = {id: newId, text: text, course: selectedCourse, timestamp: currentTime}; // Create new note object
-        console.debug(newNote);
         return {notes: [...state.notes, newNote]}; // Add note object to array
     }),
 
@@ -40,7 +37,7 @@ const noteStore = create((set) => ({
         }
     },
 
-    // Remove note where the text matches the given string
+    // Remove a note where the id's match
     removeNote: (id) =>
         set((state) => ({
             notes: state.notes.filter((note) => note.id !== id)

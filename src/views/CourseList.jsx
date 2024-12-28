@@ -21,7 +21,7 @@ function CourseList(){
     }
 
     return (
-        <div className="w-1/3 grid grid-cols-5 grid-rows-2">
+        <div className="sm:w-full md:w-11/12 lg:w-2/4 grid grid-cols-5 grid-rows-2">
             <Link 
                 to="/" 
                 className=" w-20 px-4 py-2 text-center text-white bg-blue-500 rounded-md shadow-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-600 transition-all row-start-2">

@@ -5,19 +5,21 @@ React app for taking course notes. University assignment.
 
 ### Installation
 
+- Clone the repo to your machine, and run `npm install` in the repo folder
+- Launch by running `npm run dev` and opening the web address listed in the terminal window
 - If you encounter issues, make sure you have at least NodeJS v21.7
-- Clone the project and run `npm install`
-- Launch by running `npm run dev`
 
 ### Usage
 
-The app fetches some filler courses and notes from a Netlify API. Custom notes and courses will only be saved until the browser tab is closed or refreshed.
+The app fetches some premade filler courses and notes from a Netlify API. Notes and courses will only be saved until the browser tab is closed or refreshed.
 
 - To take notes, click "Create notes for class" on the main page.
   1. Choose a course to add notes for, from the dropdown menu.
-     - After you begin saving notes, the course will be locked. You can unlock it by backing out to the main menu and returning.
+     - After you begin saving notes, the course will be locked for the session. You can start a new session by backing out to the main menu and returning.
+     - If there are no courses saved in the app, notes can't be added.
   2. Type your individual notes into the text field.
-  3. Press "Add" to save the note. Added notes will be listed below.
+  3. Press "Add" to save the note.
+  4. Saved notes will be listed below the text field until the end of the session.
 
 - To list previously saved notes, click "List notes" on the main page.
   1. Filter notes by selecting a course on the dropdown menu.
@@ -29,7 +31,7 @@ The app fetches some filler courses and notes from a Netlify API. Custom notes a
 
 
 ## AI Use
-The following is a list of all AI usage in this assignment. LLM used is ChatGPT in all cases.
+The following is a list of all AI usage in this assignment. The LLM used was ChatGPT.
 
 - 22.11. Asked to explain what each part of the `useEffect` hook does. Used the info to implement the hook into components. No copied code.
 - 23.11. Asked for Tailwind style suggestions to the `HomePage` view. Copied and adjusted several styles.
