@@ -8,7 +8,7 @@ React app for taking course notes. University assignment.
 - Clone the repo to your machine
 - Open a terminal window in the repo folder and run `npm install`
 - Launch by running `npm run dev` and opening the web address listed in the terminal window
-- If you encounter issues, make sure you have at least NodeJS v21.7
+- If you encounter issues, make sure you have at least NodeJS v21.7.3
 
 ### Usage
 
