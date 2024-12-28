@@ -41,9 +41,9 @@ const noteStore = create((set) => ({
     },
 
     // Remove note where the text matches the given string
-    removeNote: (text) =>
+    removeNote: (id) =>
         set((state) => ({
-            notes: state.notes.filter((note) => note.text !== text)
+            notes: state.notes.filter((note) => note.id !== id)
         })),
 }))
 

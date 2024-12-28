@@ -43,7 +43,7 @@ function NoteList() {
                 { 
                     filteredList.length > 0 ? (
                         filteredList.map((note) => {
-                            return <NoteCard key={note.id} timestamp={note.timestamp} course={note.course.name} courseid={note.course.id} text={note.text} />
+                            return <NoteCard key={note.id} id={note.id} timestamp={note.timestamp} course={note.course.name} courseid={note.course.id} text={note.text} />
                         })
                     ) : (
                         <NoteCard timestamp="" course="" courseid="" text="Ei muistiinpanoja!" />

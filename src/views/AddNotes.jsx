@@ -24,7 +24,7 @@ function AddNotes(){
             initializeNotes();
     }, []);
 
-    // Handle whether courses exist in the store array
+    // Handle toggling between showing or hiding the interface, depending on whether courses exist
     useEffect(() => {
         if(courses.length > 0){
             SetCoursesExist(true);
@@ -66,8 +66,7 @@ function AddNotes(){
                         </>
                     ) : (
                         <>
-                            <p className="pl-2 pt-2 h-8 mt-1">{"Valittu kurssi: " + courseName}</p>
-                            <p className="pl-2 pb-2 h-8 mb-1 text-sm">{"Vaihtaaksesi kurssia, palaa päävalikkoon."}</p>
+                            <p className="pl-1 pt-2 h-8 m-4">{"Selected course: " + courseName}</p>
                             <AddNoteInput OnClickFnc={HandleNewNote} />
                         </>
                     )
@@ -75,7 +74,7 @@ function AddNotes(){
                     <p>Add courses before adding notes</p>
                 )
             }
-            <div className="w-full grid mx-2 mt-4 border rounded-md bg-slate-200 border-slate-700 divide-y divide-slate-700 col-span-5">
+            <div className="w-full grid mx-2 mt-4 border rounded-md overflow-hidden bg-slate-200 border-slate-700 divide-y divide-slate-700 col-span-5">
                 { 
                     currentNotes.length > 0 && currentNotes != null ? (
                         currentNotes.map((note, index) => {

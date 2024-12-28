@@ -6,7 +6,7 @@ function NoteCard(props)
 {
     const removeNote = noteStore((state) => state.removeNote);
     function HandleClick(){
-        removeNote(props.text);
+        removeNote(props.id);
     }
 
     return (
