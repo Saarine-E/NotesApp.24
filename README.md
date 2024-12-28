@@ -5,7 +5,8 @@ React app for taking course notes. University assignment.
 
 ### Installation
 
-- Clone the repo to your machine, and run `npm install` in the repo folder
+- Clone the repo to your machine
+- Open a terminal window in the repo folder and run `npm install`
 - Launch by running `npm run dev` and opening the web address listed in the terminal window
 - If you encounter issues, make sure you have at least NodeJS v21.7
 
@@ -31,7 +32,7 @@ The app fetches some premade filler courses and notes from a Netlify API. Notes 
 
 
 ## AI Use
-The following is a list of all AI usage in this assignment. The LLM used was ChatGPT.
+The following is a disclosure of all AI usage in this assignment. The LLM used was ChatGPT.
 
 - 22.11. Asked to explain what each part of the `useEffect` hook does. Used the info to implement the hook into components. No copied code.
 - 23.11. Asked for Tailwind style suggestions to the `HomePage` view. Copied and adjusted several styles.
