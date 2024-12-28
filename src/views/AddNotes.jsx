@@ -4,29 +4,31 @@ import noteStore from "../stores/noteStore"
 import courseStore from "../stores/courseStore"
 import AddNoteInput from "../components/AddNoteInput";
 import CourseDropdown from "../components/CourseDropdown";
+import NoteCardText from "../components/NoteCardText";
 
 function AddNotes(){
     const courses = courseStore((state) => state.courses);
     const initializeCourses = courseStore((state) => state.initializeCourses);
     const [coursesExist, SetCoursesExist] = useState(false);
-    const [courseName, SetSelectedCourse] = useState(1);
+    const [courseName, SetSelectedCourse] = useState("-");
     const [courseLocked, SetCourseLock] = useState(false);
 
     const addNote = noteStore((state) => state.addNote);
     const initializeNotes = noteStore((state) => state.initializeNotes);
     const [currentNotes, SetCurrentNotes] = useState([]);
+
     
     // Handle the API fetching with courses and notes
     useEffect(() => {
             initializeCourses();
             initializeNotes();
-            console.debug(courses);
     }, []);
 
     // Handle whether courses exist in the store array
     useEffect(() => {
         if(courses.length > 0){
             SetCoursesExist(true);
+            SetSelectedCourse(courseStore.getState().courses[0].name);
         } else {
             SetCoursesExist(false);
         }
@@ -41,11 +43,12 @@ function AddNotes(){
     
     // Handle adding new notes
     const HandleNewNote = ( text ) => {
+        console.debug(currentNotes);
         SetCourseLock(true);
-        SetCurrentNotes(...currentNotes, text);
+        SetCurrentNotes([...currentNotes, text]);
         addNote(text, courseName);
     }
-
+// className="w-1/3 grid grid-cols-5 grid-rows-2"
     return (
         <div className="sm:w-full md:w-11/12 lg:w-2/4">
             <Link 
@@ -58,12 +61,13 @@ function AddNotes(){
                 coursesExist ? ( // If there are no courses, hide components for adding notes
                     courseLocked != true ? ( // Remove course dropdown after first note is added, until user leaves the view
                         <>
-                            <CourseDropdown OnCourseChange={HandleCourseSelect} />
+                            <CourseDropdown OnCourseChange={HandleCourseSelect} removeAllOption={true} />
                             <AddNoteInput OnClickFnc={HandleNewNote} />
                         </>
                     ) : (
                         <>
-                            <p className="p-1 h-8">{courseName}</p>
+                            <p className="pl-2 pt-2 h-8 mt-1">{"Valittu kurssi: " + courseName}</p>
+                            <p className="pl-2 pb-2 h-8 mb-1 text-sm">{"Vaihtaaksesi kurssia, palaa päävalikkoon."}</p>
                             <AddNoteInput OnClickFnc={HandleNewNote} />
                         </>
                     )
@@ -71,6 +75,17 @@ function AddNotes(){
                     <p>Add courses before adding notes</p>
                 )
             }
+            <div className="w-full grid mx-2 mt-4 border rounded-md bg-slate-200 border-slate-700 divide-y divide-slate-700 col-span-5">
+                { 
+                    currentNotes.length > 0 && currentNotes != null ? (
+                        currentNotes.map((note, index) => {
+                            return <NoteCardText key={index} text={note} />
+                        })
+                    ) : (
+                        <NoteCardText text=" " />
+                    )
+                }
+            </div>
         </div>
     )
 }

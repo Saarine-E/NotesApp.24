@@ -6,10 +6,8 @@ const noteStore = create((set) => ({
 
     notes: [],
     initialized: false,
-    dateFormat: new Intl.DateTimeFormat("fi-FI"),
 
     // Add note to array
-    // Props: text, courseId
     addNote: (text, courseName) => set ((state) => {
         let newId = 0;
         for(let i = 0; i < state.notes.length; i++) { // Loop through courses to find the first unused ID number
@@ -20,14 +18,11 @@ const noteStore = create((set) => ({
         newId++;
 
         let currentTime = format(new Date(), "yyyy-MM-dd HH:mm:ss"); // Get current time in ISO standard
-        // console.debug("note time: " + currentTime);
-        // console.debug("note course orig: " + courseName);
-        // console.debug("note text: " + text);
-        // console.debug(courseStore.getState().courses);
         let selectedCourse = courseStore.getState().courses.find((course) => course.name == courseName); // Find course object matching the given course ID
-        // console.debug("note course: " + courseName + " to " + selectedCourse.id);
-        console.debug(state.notes);
+        console.debug(courseName);
+        console.debug(courseStore.getState().courses);
         let newNote = {id: newId, text: text, course: selectedCourse, timestamp: currentTime}; // Create new note object
+        console.debug(newNote);
         return {notes: [...state.notes, newNote]}; // Add note object to array
     }),
 
